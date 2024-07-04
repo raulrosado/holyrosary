@@ -149,10 +149,9 @@ export default function Home() {
             <a href="#" className="-m-1.5 p-1.5">
               <span className="sr-only">Holy Rosary</span>
               <img
-                className="h-16 w-auto object-cover"
+                className="h-2/3 w-auto object-cover"
                 src="holylogo.png"
-                alt=""
-
+                alt="Logo"
               />
             </a>
           </div>
