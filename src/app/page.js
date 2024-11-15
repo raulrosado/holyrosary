@@ -1,10 +1,18 @@
 "use client"
 import { useState } from 'react'
-// import { Dialog, DialogPanel } from '@headlessui/react'
-// import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import { Dialog, DialogPanel } from '@headlessui/react'
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import { Popover, PopoverButton, PopoverPanel } from '@headlessui/react'
+import { ArrowPathIcon,ChartPieIcon,CursorArrowRaysIcon,FingerPrintIcon, SquaresPlusIcon,ChevronDownIcon } from '@heroicons/react/20/solid'
 
 const navigationtop = [
-  { name: 'About', href: 'https://holyrosarycu.org/about-us.html' },
+  { name: 'About Us', 'opciones' : [
+    { name: 'Analytics', description: 'Get a better understanding of your traffic', href: '#', icon: ChartPieIcon },
+    { name: 'Engagement', description: 'Speak directly to your customers', href: '#', icon: CursorArrowRaysIcon },
+    { name: 'Security', description: "Your customers' data will be safe and secure", href: '#', icon: FingerPrintIcon },
+    { name: 'Integrations', description: 'Connect with third-party tools', href: '#', icon: SquaresPlusIcon },
+    { name: 'Automations', description: 'Build strategic funnels that will convert', href: '#', icon: ArrowPathIcon },
+  ] },
   { name: 'Resources', href: 'https://holyrosarycu.org/resources.html' },
   { name: 'Loans', href: 'https://holyrosarycu.org/loans.html' },
   { name: 'Services', href: 'https://holyrosarycu.org/services.html' },
@@ -47,6 +55,7 @@ const testimonials = [
   },
   // More testimonials...
 ]
+
 
 const navigation = {
   solutions: [
@@ -146,7 +155,7 @@ export default function Home() {
       <header className="absolute inset-x-0 top-0 z-50">
         <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
           <div className="flex lg:flex-1">
-            <a href="#" className="-m-1.5 p-1.5">
+            <a href="/" className="-m-1.5 p-1.5">
               <span className="sr-only">Holy Rosary</span>
               <img
                 className="h-2/3 w-auto object-cover"
@@ -166,11 +175,41 @@ export default function Home() {
             </button>
           </div>
           <div className="hidden lg:flex lg:gap-x-12">
-            {navigationtop.map((item) => (
-              <a key={item.name} href={item.href} className="text-sm font-semibold leading-6 text-gray-900">
-                {item.name}
-              </a>
-            ))}
+              {/* <a key={item.name} href={item.href} className="text-sm font-semibold leading-6 text-gray-900">
+                  {item.name}
+                </a> */}
+              {navigationtop.map((item) => (
+            <Popover className="relative" key={item.name}>
+                <PopoverButton  className="inline-flex items-center gap-x-1 text-sm/6 font-semibold text-gray-900">
+                  <span >{item.name}</span>
+                  <ChevronDownIcon aria-hidden="true" className="size-5" />
+                </PopoverButton>
+
+                <PopoverPanel
+                    transition
+                    className="absolute left-1/2 z-10 mt-5 flex w-screen max-w-max -translate-x-1/2 px-4 transition data-[closed]:translate-y-1 data-[closed]:opacity-0 data-[enter]:duration-200 data-[leave]:duration-150 data-[enter]:ease-out data-[leave]:ease-in"
+                  >
+                    <div className="w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-white text-sm/6 shadow-lg ring-1 ring-gray-900/5">
+                      <div className="p-4">
+                        {item.opciones.map((item) => (
+                          <div key={item.name} className="group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50">
+                            <div className="mt-1 flex size-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
+                              <item.icon aria-hidden="true" className="size-6 text-gray-600 group-hover:text-indigo-600" />
+                            </div>
+                            <div>
+                              <a href={item.href} className="font-semibold text-gray-900">
+                                {item.name}
+                                <span className="absolute inset-0" />
+                              </a>
+                              <p className="mt-1 text-gray-600">{item.description}</p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </PopoverPanel>
+              </Popover>
+              ))}
           </div>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
             <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
@@ -225,7 +264,7 @@ export default function Home() {
                   Working together to create a world without poverty by providing economic opportunity!
                   </h1>
                   <p className="mt-6 text-lg leading-8 text-gray-600 sm:max-w-md lg:max-w-none">
-                  Holy Rosary Credit Union is a financial cooperative owned by all its members who share our common bond.  Anyone can become a member by joining our nonprofit, The Magis Foundation, with a one-time $5 fee.  Otherwise our members are eligible because they have affiliations through their family, workplace, place of worship like a  parish of the Catholic Diocese of Kansas City-St. Joseph. While other institutions are profit-centered, Holy Rosary Credit Union is a not-for-profit organization designed to meet the financial needs of its members. By collectively pooling resources, members can make low-cost loans and earn higher returns on their savings.
+                   mik mol Holy Rosary Credit Union is a financial cooperative owned by all its members who share our common bond.  Anyone can become a member by joining our nonprofit, The Magis Foundation, with a one-time $5 fee.  Otherwise our members are eligible because they have affiliations through their family, workplace, place of worship like a  parish of the Catholic Diocese of Kansas City-St. Joseph. While other institutions are profit-centered, Holy Rosary Credit Union is a not-for-profit organization designed to meet the financial needs of its members. By collectively pooling resources, members can make low-cost loans and earn higher returns on their savings.
                   </p>
                   <div className="mt-10 flex items-center gap-x-6">
                     <a
