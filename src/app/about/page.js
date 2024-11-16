@@ -44,7 +44,7 @@ export default function About() {
 
 Send us your questions or concerns using the form below, or call us at 816.221.2734. 
 
-When contacting us via email or the form below, please remember not to include private or personal information. You may safely email any personal information by logging into Online Banking and clicking the Message Center dropdown and then "Start a New Conversation."
+When contacting us via email or the form below, please remember not to include private or personal information. You may safely email any personal information by logging into Online Banking and clicking the Message Center dropdown and then Start a New Conversation
             </p>
             <dl className="mt-10 space-y-4 text-base/7 text-gray-600">
               <div className="flex gap-x-4">
